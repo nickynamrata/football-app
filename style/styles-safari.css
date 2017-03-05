@@ -1,0 +1,10 @@
+
+#canvas
+{
+	background-position: 0.9px -489.5px;
+	-webkit-transition: background .5s ease;
+	-moz-transition: background .5s ease;
+	-ms-transition: background .5s ease;
+	-o-transition: background .5s ease;
+	transition: background .5s ease;
+}

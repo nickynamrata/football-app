@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Binary Football </title>
+	
+    <meta name="viewport" content="width=984, user-scalable=yes, initial-scale=1, maximum-scale=1" />
+	
+    <link type="text/css" rel="stylesheet" href="style/main.css" />
+    <!--[if lt IE 9]>
+        <script src="lib/html5shiv.min.js"></script>
+    <![endif]-->
+    
+    <!--Safari Browser-->
+<script>
+   function load(){
+	var iOS = false,
+	p = navigator.platform;
+	
+	if( p === 'iPad' || p === 'iPhone' || p === 'iPod' ) iOS = true;
+	if(iOS) return false;
+
+	var userAgent = navigator.userAgent.toLowerCase(); 
+	if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+		var $ = document; // shortcut
+		var cssId = 'myCss';  // you could encode the css path itself to generate id..
+		if (!$.getElementById(cssId))
+		{
+			var head  = $.getElementsByTagName('head')[0];
+			var link  = $.createElement('link');
+			link.id   = cssId;
+			link.rel  = 'stylesheet';
+			link.type = 'text/css';
+			link.href = 'style/styles-safari.css';
+			link.media = 'all';
+			head.appendChild(link);
+		}
+	}
+}
+
+</script>
+<!--Safari Browser-->
+</head>
+
+<body onload="load()">
+<div id="dashboard">
+    <section id="wrapper">
+        <div id="container">
+            <div id="sub-container">
+            	<div id="frame-1">
+                    <h3 id="gameTitle">Binary Football </h3>
+                    <div id="instructions">
+                            <li>This is a game for two teams. If you can correctly convert the decimals to binary and binaries to decimal, then you’ll advance up the pitch. If you can get close enough to goal then you have a chance to score. Get a question wrong and possession goes to your opponent. The game will last 10 minutes.</li>
+                            <li>Ready to kick off? Hit the start button.</li>
+                     </div>
+                     <div>
+                     	<div id="Startball"></div>
+                        <div id="Startblue"></div>
+                        <div id="Startred"></div>
+                     </div>
+                	<button id="btn-start" class="button">START</button>
+                </div><!--frame-1-->
+		<div id ="frame-0">
+			<div class="form">
+			<input type="radio"  CHECKED value=" Game against Human" name=" Game against Human"><br><br>
+			<input type="radio" value=" Game against Computer" name=" Game against Computer"><br><br>
+			</div ><!--from-->
+			<button id="btn-Play" class="button" onClick="Play()">PLAY</button>
+		</div><!--frame-0-->
+                
+                 <div id="frame-2">
+                 	<div class="form">
+                        <div id="redTeam">
+                            <h2>Enter <span>red</span> team name</h2>
+                            <input type="text" id="team1" name="team1" placeholder="Red" value="Red Team" class="enterName" />
+                        </div>
+                        <div id="blueTeam">
+                            <h2>Enter <span>blue</span> team name</h2>
+                            <input type="text" id="team2" name="team2" placeholder="Blue" value="Blue Team" class="enterName" />
+                        </div>
+                    </div><!--form-->
+                    
+                    <button id="btn-Kick" class="button" onClick="KickOff()">Kick off</button>
+                    
+                 </div><!--frame-2-->
+                 
+                 <div id="frame-3">
+                 	<div id="timeLeft">
+                         <label>Time Left:</label> 
+                         <input name="userTime" id="time-mins"  type="text" readonly> <span>mins</span> 
+                         <input name="userTime" id="time-secs" type="text" readonly> <span>Secs</span>
+                     </div>
+                     
+                 	<div id="scoreStats">
+                         <label>Score:</label> 
+                         <input name="scores" id="score-team1"  type="text" value="0" readonly> <span id="t1">Red Team </span> 
+                         <input name="scores" id="score-team2" type="text" value="0" readonly> <span id="t2">Blue Team </span>
+                     </div>
+                     <div class="clear"></div>
+                     <div id="soccer">
+                     	<canvas  id="canvas">Your browser does not support canvas. Please update your browser to play the game.
+                        </canvas>
+                     	<div id="football"></div>
+                        <div id="blueplayer-1" class="bluePlayer"></div>
+                        <div id="blueplayer-2" class="bluePlayer"></div>
+                        <div id="blueplayer-3" class="bluePlayer"></div>
+                        <div id="blueplayer-4" class="bluePlayer"></div>
+                        <div id="redplayer-1" class="redPlayer"></div>
+                        <div id="redplayer-2" class="redPlayer"></div>
+                        <div id="redplayer-3" class="redPlayer"></div>
+                        <div id="redplayer-4" class="redPlayer"></div>
+                     </div>
+                     <div class="clear"></div>
+                     
+                     <div id="questionViewer">
+                     	<div id="questionTitle" class="popupEffect"> </div>
+                     	<div id="userAnswer" class="fadeIn" data-team=""><input type="text" id="uAnswer" name="uAnswer" /> 
+                        <button id="submitAns" class="button">SUBMIT</button></div>
+                        
+                        <div id="shoot-wrapper">
+                        	<button id="shoot" class="button">Shoot</button>
+                        </div>
+                     </div>
+                     
+                     <div id="finishScreen">
+                    	<div id="timeCount">
+                        <div id="stat">
+                        	<h2>Score</h2>
+                            <div id="sTeam1">
+                            	<div class="TeamName1">Red Team 
+                                	<div id="score-sTeam1"></div>
+                                </div>
+                            </div>
+                            <div id="sTeam2">
+                            	<div class="TeamName2">Blue Team 
+                                	<div id="score-sTeam2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="winnerMsg"></div>
+                        <button id="btn-restart" class="button">TRY AGAIN</button>
+                        </div>
+                    </div>
+                    
+                 </div><!--frame-3-->
+           
+            </div><!--sub-container-->
+            
+            <div id="popup">
+            	<div class="content">
+                	<p id="message" class="blink"></p>
+                </div>
+            </div>
+            
+        </div><!--container-->
+    </section>
+</div>
+
+
+
+<script type="text/javascript" src="lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="lib/jquery.backgroundpos.min.js"></script>
+<script type="text/javascript" src="lib/configPosition.js"></script>
+
+<script type="text/javascript">
+var sc = document.createElement('script');
+sc.setAttribute('type', 'text/javascript');
+
+if($('html').hasClass('ie9'))
+	sc.src = "lib/gameSpecIE9.js"
+else
+	sc.src = "lib/gameSpec.js"
+
+document.getElementsByTagName('body')[0].appendChild(sc);
+</script>
+
+
+
+
+
+</body>
+</html>

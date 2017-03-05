@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>Football Animation</title>
+</head>
+<style type="text/css">
+div
+{
+	width: 30px;
+	height: 30px;
+	background-image: url('ball-sequence.png');
+	background-position: 0px 0px;
+	-webkit-animation: ballAnimation .2s steps(4) infinite alternate;
+	animation: ballAnimation .2s steps(4) infinite alternate;
+}
+
+@-webkit-keyframes ballAnimation
+{
+	from { background-position: 0px 0px; }
+	to { background-position: 0px -120px; }
+}
+
+@-moz-keyframes ballAnimation
+{
+	from { background-position: 0px 0px; }
+	to { background-position: 0px -120px; }
+}
+
+@-ms-keyframes ballAnimation
+{
+	from { background-position: 0px 0px; }
+	to { background-position: 0px -120px; }
+}
+
+@-o-keyframes ballAnimation
+{
+	from { background-position: 0px 0px; }
+	to { background-position: 0px -120px; }
+}
+
+@keyframes ballAnimation
+{
+	from { background-position: 0px 0px; }
+	to { background-position: 0px -120px; }
+}
+</style>
+<body>
+
+<div>
+
+</div>
+</body>
+</html>
